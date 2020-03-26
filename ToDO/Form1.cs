@@ -40,20 +40,21 @@ namespace ToDO
         }
         else
         {
+          // gets the time and checks if its urgent.
           DateTime todoCreated = DateTime.Now;
           bool urgent = cbUrgent.Checked;
           string todoText = "";
 
           if (urgent) 
           {
+            // I figured that you really only need the date created not the time, hense the :d.
             todoText = ($"{newItem}, created on {todoCreated:d}.  URGENT!");
           }
           else
           {
             todoText = ($"{newItem} - created on {todoCreated:d}.");
           }
-          
-
+        
           clsToDo.Items.Add(todoText);
           txtNewToDo.Text = "";
         }
