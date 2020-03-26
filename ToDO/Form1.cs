@@ -46,7 +46,7 @@ namespace ToDO
 
           if (urgent) 
           {
-            todoText = ($"{newItem}, created on {todoCreated.Date}.  URGENT!");
+            todoText = ($"{newItem}, created on {todoCreated:d}.  URGENT!");
           }
           else
           {
