@@ -20,61 +20,51 @@ namespace ToDO
     private void btnAdd_Click(object sender, EventArgs e)
     {
       string newItem = txtNewToDo.Text.Trim();
-      bool repeat = false;
-
-      //ensuring that the new item is not a repeat item.
-      foreach(string item in clsToDo.Items)
-      {
-        if(item.ToLower() == newItem.ToLower())
-        {
-          repeat = true;
-        }
-      }
+      bool urgent = cbUrgent.Checked;
 
       // makeing sure that there is an item, that it's unique, checking if it's urgent, and adding it to the list.
       if (!String.IsNullOrWhiteSpace(newItem))
       {
-        if (repeat)
+        if (!checkRepeat(newItem))
         {
-          MessageBox.Show("That task is aready on the list.", "Error");
+          ToDoItem todoItem = new ToDoItem(newItem, urgent);
+
+          clsToDo.Items.Add(todoItem);
+
+          txtNewToDo.Text = "";
         }
         else
         {
-          // gets the time and checks if its urgent.
-          DateTime todoCreated = DateTime.Now;
-          bool urgent = cbUrgent.Checked;
-          string todoText = "";
-
-          if (urgent) 
-          {
-            // I figured that you really only need the date created not the time, hense the :d.
-            todoText = ($"{newItem}, created on {todoCreated:d}.  URGENT!");
-          }
-          else
-          {
-            todoText = ($"{newItem} - created on {todoCreated:d}.");
-          }
-        
-          clsToDo.Items.Add(todoText);
-          txtNewToDo.Text = "";
+          MessageBox.Show("You already have that entry on your list.", "Error");
         }
       }
-
       txtNewToDo.Focus();
+    }
 
+    private bool checkRepeat(string newItem)
+    {
+      // You'll never believe this, it checks... the repeats! Funniest thing I've seen.
+      foreach (ToDoItem item in clsToDo.Items)
+      {
+        if (item.Text.ToLower() == newItem.ToLower())
+        {
+          return true;
+        }
+      }
+      return false;
     }
 
     private void btnDelete_Click(object sender, EventArgs e)
     {
       // puts all the checked items in a list and then takes everything from that list and deletes it from the main checklist and adds it to the completed list.
-      List<string> doneItems = new List<string>();
+      List<ToDoItem> doneItems = new List<ToDoItem>();
 
-      foreach(string item in clsToDo.CheckedItems)
+      foreach(ToDoItem item in clsToDo.CheckedItems)
       {
         doneItems.Add(item);
       }
 
-      foreach(string item in doneItems)
+      foreach(ToDoItem item in doneItems)
       {
         clsToDo.Items.Remove(item);
         lstDone.Items.Add(item);
