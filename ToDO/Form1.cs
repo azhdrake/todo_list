@@ -15,6 +15,8 @@ namespace ToDO
     public Form1()
     {
       InitializeComponent();
+      string[] categories = { "Work", "School", "Personal" };
+      cbCategory.DataSource = categories;
     }
 
     private void btnAdd_Click(object sender, EventArgs e)
@@ -27,11 +29,18 @@ namespace ToDO
       {
         if (!checkRepeat(newItem))
         {
-          ToDoItem todoItem = new ToDoItem(newItem, urgent);
+          if (!string.IsNullOrWhiteSpace(cbCategory.Text))
+          {
+            ToDoItem todoItem = new ToDoItem(newItem, cbCategory.Text, urgent);
 
-          clsToDo.Items.Add(todoItem);
+            clsToDo.Items.Add(todoItem);
 
-          txtNewToDo.Text = "";
+            txtNewToDo.Text = "";
+          }
+          else
+          {
+            MessageBox.Show("Please give a category.");
+          }
         }
         else
         {

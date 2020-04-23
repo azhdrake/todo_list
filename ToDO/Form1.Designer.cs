@@ -37,6 +37,8 @@
       this.label3 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
       this.cbUrgent = new System.Windows.Forms.CheckBox();
+      this.cbCategory = new System.Windows.Forms.ComboBox();
+      this.label4 = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // txtNewToDo
@@ -48,7 +50,7 @@
       // 
       // btnAdd
       // 
-      this.btnAdd.Location = new System.Drawing.Point(537, 40);
+      this.btnAdd.Location = new System.Drawing.Point(686, 77);
       this.btnAdd.Name = "btnAdd";
       this.btnAdd.Size = new System.Drawing.Size(115, 38);
       this.btnAdd.TabIndex = 1;
@@ -61,7 +63,7 @@
       this.clsToDo.FormattingEnabled = true;
       this.clsToDo.Location = new System.Drawing.Point(80, 121);
       this.clsToDo.Name = "clsToDo";
-      this.clsToDo.Size = new System.Drawing.Size(572, 144);
+      this.clsToDo.Size = new System.Drawing.Size(721, 144);
       this.clsToDo.TabIndex = 2;
       // 
       // btnDelete
@@ -80,7 +82,7 @@
       this.lstDone.ItemHeight = 25;
       this.lstDone.Location = new System.Drawing.Point(80, 356);
       this.lstDone.Name = "lstDone";
-      this.lstDone.Size = new System.Drawing.Size(572, 154);
+      this.lstDone.Size = new System.Drawing.Size(721, 154);
       this.lstDone.TabIndex = 4;
       // 
       // label2
@@ -113,19 +115,38 @@
       // cbUrgent
       // 
       this.cbUrgent.AutoSize = true;
-      this.cbUrgent.Location = new System.Drawing.Point(423, 46);
+      this.cbUrgent.Location = new System.Drawing.Point(686, 42);
       this.cbUrgent.Name = "cbUrgent";
       this.cbUrgent.Size = new System.Drawing.Size(108, 29);
       this.cbUrgent.TabIndex = 8;
       this.cbUrgent.Text = "Urgent";
       this.cbUrgent.UseVisualStyleBackColor = true;
       // 
+      // cbCategory
+      // 
+      this.cbCategory.FormattingEnabled = true;
+      this.cbCategory.Location = new System.Drawing.Point(441, 44);
+      this.cbCategory.Name = "cbCategory";
+      this.cbCategory.Size = new System.Drawing.Size(227, 33);
+      this.cbCategory.TabIndex = 9;
+      // 
+      // label4
+      // 
+      this.label4.AutoSize = true;
+      this.label4.Location = new System.Drawing.Point(436, 16);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(99, 25);
+      this.label4.TabIndex = 10;
+      this.label4.Text = "Category";
+      // 
       // Form1
       // 
       this.AcceptButton = this.btnAdd;
       this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(735, 560);
+      this.ClientSize = new System.Drawing.Size(879, 560);
+      this.Controls.Add(this.label4);
+      this.Controls.Add(this.cbCategory);
       this.Controls.Add(this.cbUrgent);
       this.Controls.Add(this.label3);
       this.Controls.Add(this.label2);
@@ -153,6 +174,8 @@
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.CheckBox cbUrgent;
-  }
+        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.Label label4;
+    }
 }
 

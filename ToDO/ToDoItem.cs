@@ -12,18 +12,20 @@ namespace ToDO
     public string Text { get; set; }
     public bool Urgent { get; set; }
     public DateTime DateCreate { get; set; } = DateTime.Now;
+    public string Category { get; set; }
 
     // Constructor
-    public ToDoItem(string text, bool urgent)
+    public ToDoItem(string text, string category, bool urgent)
     {
       Text = text;
+      Category = category;
       Urgent = urgent;
     }
 
     // Tostring method
     public override string ToString()
     {
-      string dispalyText = $"{Text} - {DateCreate:d}";
+      string dispalyText = $"{Text} - {Category} - {DateCreate:d}";
       if (Urgent)
       {
         dispalyText += " URGENT!";
